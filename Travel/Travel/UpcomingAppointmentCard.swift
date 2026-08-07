@@ -20,7 +20,7 @@ struct UpcomingAppointmentCard: View {
                 .padding(.horizontal, 16)
                 doctorInfoView
             }
-        
+         
         .frame(width: 393)
         .background(.card)
         .clipShape(RoundedRectangle(cornerRadius: 24))

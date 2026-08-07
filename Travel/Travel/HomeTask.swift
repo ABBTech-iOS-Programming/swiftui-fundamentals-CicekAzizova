@@ -9,13 +9,17 @@ import SwiftUI
 
 struct HomeTask: View {
     var body: some View {
-        ScrollView{
-            UpcomingAppointmentCard()
-            AppointmentCard()
-            Card()
-            
+        ScrollView(.vertical){
+            VStack(spacing: 24) {
+                UpcomingAppointmentCard()
+                AppointmentCard()
+                Card()
+                
+            }
+            .padding(.horizontal, 40)
         }
         .background(.secondary.opacity(0.2))
+        
        
     }
         

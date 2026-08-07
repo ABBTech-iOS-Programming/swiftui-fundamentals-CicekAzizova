@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AppointmentCard: View {
     var cardView: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading,spacing: 0){
             image
             hospitalInfo
             doctorInfo
@@ -51,7 +51,7 @@ struct AppointmentCard: View {
         ZStack {
             Rectangle()
                 .foregroundStyle(.card)
-                .frame(width: 280, height: 48)
+                
             HStack{
                 Text("Madelyn Hospital")
                     .font(.jakarta("Bold", size: 16))
@@ -64,6 +64,7 @@ struct AppointmentCard: View {
             .padding()
             .foregroundStyle(.white)
         }
+        .frame(width: 280, height: 48)
     }
     
     var doctorInfo: some View {

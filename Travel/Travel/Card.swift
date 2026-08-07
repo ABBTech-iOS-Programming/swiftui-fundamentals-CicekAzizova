@@ -23,7 +23,6 @@ struct Card: View {
             }
             .padding(20)
         }
-     
         .padding(20)
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 24))
@@ -98,9 +97,7 @@ struct Card: View {
         )
         .padding(.horizontal, 10)
     }
-    
-    
-    
+ 
     var doctorPrice: some View {
         VStack(alignment: .leading) {
             Text("Rp 240.000")
@@ -130,35 +127,9 @@ struct Card: View {
                         )
                       
         }
-       
-    
-
     }
     var body: some View {
        cardView
-    }
-}
-struct StatItem: View {
-    let icon: String
-    let title: String
-    let subtitle: String
-    
-    var body: some View {
-        VStack(spacing: 4) {
-            HStack(spacing: 2) {
-                Image(systemName: icon)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20, height: 20)
-                    .foregroundStyle(.card)
-                Text(title)
-                    .font(.jakarta("Bold", size: 16))
-            }
-            Text(subtitle)
-                .font(.jakarta("SemiBold", size: 14))
-                .foregroundStyle(.secondaryText)
-        }
-        .frame(maxWidth: .infinity)
     }
 }
 
