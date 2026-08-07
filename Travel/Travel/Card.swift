@@ -23,19 +23,21 @@ struct Card: View {
             }
             .padding(20)
         }
+     
+        .padding(20)
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 24))
-        .padding(40)
         
     }
     
     var image: some View {
-        Image(.doctor)
-            .resizable()
-            .scaledToFill()
-            .frame(width: 99, height: 120)
-            .background(.appointmentCard)
-            .clipShape(
+        ZStack(alignment: .topLeading) {
+            Image(.doctor)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 99, height: 120)
+                .background(.appointmentCard)
+                .clipShape(
                     .rect(
                         topLeadingRadius: 0,
                         bottomLeadingRadius: 24,
@@ -43,7 +45,17 @@ struct Card: View {
                         topTrailingRadius: 24
                     )
                 )
-            .padding(20)
+            
+            ZStack {
+                Circle()
+                    .fill(.circle.opacity(0.2))
+                    .frame(width: 18,height: 18)
+                Circle()
+                    .fill(.circle)
+                    .frame(width: 10,height: 10)
+            }
+            .padding(8)
+        }
     }
     var doctorInfo: some View {
         VStack(alignment: .leading,spacing: 8){
@@ -63,63 +75,31 @@ struct Card: View {
     }
     
     var doctorStatus: some View {
-    
-                HStack(spacing: 24) {
-                    VStack(spacing: 4) {
-                        HStack(spacing: 2){
-                            Image(systemName: "checkmark.seal.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20,height: 20)
-                                .foregroundStyle(.card)
-                            Text("Verify")
-                                .font(.jakarta("Bold", size: 16))
-                        }
-                        Text("Certified")
-                            .font(.jakarta("SemiBold", size: 14))
-                            .foregroundStyle(.secondaryText)
-                    }
-                    .frame(maxWidth: .infinity)
-                    VStack(spacing: 4) {
-                        HStack(spacing: 2) {
-                            Image(systemName: "cross.case.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20,height: 20)
-                                .foregroundStyle(.card)
-                            
-                            Text("5 Years")
-                                .font(.jakarta("Bold", size: 16))
-                        }
-                        Text("Experience")
-                            .font(.jakarta("SemiBold", size: 14))
-                            .foregroundStyle(.secondaryText)
-                    }
-                    .frame(maxWidth: .infinity)
-                    VStack(spacing: 4) {
-                        HStack(spacing: 2){
-                            Image(systemName: "star.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20,height: 20)
-                                .foregroundStyle(.card)
-                            Text("4.5")
-                                .font(.jakarta("Bold", size: 16))
-                        }
-                        Text("Rating")
-                            .font(.jakarta("SemiBold", size: 14))
-                            .foregroundStyle(.secondaryText)
-                    }
-                    .frame(maxWidth: .infinity)
-                
-            }
-                .padding(.vertical, 16)
-                .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color(.systemGray4), lineWidth: 1)
-                    )
-                .padding(.horizontal,10)
+        HStack(spacing: 24) {
+            StatItem(icon: "checkmark.seal.fill", title: "Verify", subtitle: "Certified")
+            
+            Rectangle()
+                .fill(Color(.systemGray4))
+                .frame(width: 1, height: 36)
+              
+            
+            StatItem(icon: "cross.case.fill", title: "5 Years", subtitle: "Experience")
+            
+            Rectangle()
+                .fill(Color(.systemGray4))
+                .frame(width: 1, height: 36)
+            
+            StatItem(icon: "star.fill", title: "4.5", subtitle: "Rating")
+        }
+        .padding(.vertical, 16)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color(.systemGray4), lineWidth: 1)
+        )
+        .padding(.horizontal, 10)
     }
+    
+    
     
     var doctorPrice: some View {
         VStack(alignment: .leading) {
@@ -158,6 +138,30 @@ struct Card: View {
        cardView
     }
 }
+struct StatItem: View {
+    let icon: String
+    let title: String
+    let subtitle: String
+    
+    var body: some View {
+        VStack(spacing: 4) {
+            HStack(spacing: 2) {
+                Image(systemName: icon)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .foregroundStyle(.card)
+                Text(title)
+                    .font(.jakarta("Bold", size: 16))
+            }
+            Text(subtitle)
+                .font(.jakarta("SemiBold", size: 14))
+                .foregroundStyle(.secondaryText)
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
+
 #Preview {
     Card()
 }

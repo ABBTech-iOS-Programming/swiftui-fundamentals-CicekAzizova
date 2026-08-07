@@ -29,9 +29,8 @@ struct AppointmentCard: View {
                 .background(.appointmentCard)
                 
                 HStack(spacing: 6){
-                    Image(systemName: "circle.fill")
-                        .resizable()
-                        .scaledToFill()
+                    Circle()
+                        .fill(.circle)
                         .frame(width: 10,height: 10)
                     
                     Text("Available")

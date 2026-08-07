@@ -24,7 +24,6 @@ struct UpcomingAppointmentCard: View {
         .frame(width: 393)
         .background(.card)
         .clipShape(RoundedRectangle(cornerRadius: 24))
-        .padding()
   
         
     }
